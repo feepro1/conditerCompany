@@ -14,7 +14,7 @@ public class priceTable {
 
     public String categoryPrice;
 
-    public String DescriptionPrice;
+    public String descriptionPrice;
 
 }
 

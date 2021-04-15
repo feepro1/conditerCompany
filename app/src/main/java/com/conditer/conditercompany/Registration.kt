@@ -38,7 +38,8 @@ class Registration : AppCompatActivity() {
 
         val newUser1 = utd?.getUserById(utd.usersCount)
         if (newUser1 != null) {
-            findViewById<TextView>(R.id.textView11).text = newUser1.name
+            Toast.makeText(this,"Пользватель создан",Toast.LENGTH_SHORT).show()
+            finish()
         }
     }
 }

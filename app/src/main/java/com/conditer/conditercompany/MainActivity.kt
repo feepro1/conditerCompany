@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.room.Room
 import com.conditer.conditercompany.databasese.AppDatabase
+import com.conditer.conditercompany.databasese.priceTable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -39,8 +40,21 @@ class MainActivity : AppCompatActivity() {
                 AppDatabase::class.java, "database"
         ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
         val priceDAO = db.priceTableDao();
-        //if(priceDAO.countAllPrice > 0)
+        val priceItem = priceTable();
+        if(priceDAO.countAllPrice == 0.toLong())
+            for(i in 0..9){
+                priceItem.namePrice = this.resources.getStringArray(R.array.sweetArray)[i]
+                priceItem.categoryPrice = this.resources.getStringArray(R.array.sweetCategory)[i]
+                priceItem.descriptionPrice = this.resources.getStringArray(R.array.sweetDescription)[i]
+                priceItem.otdelPrice = 1;
+                priceDAO.addPrice(priceItem)//добавление в базу
 
+                priceItem.namePrice = this.resources.getStringArray(R.array.cakeArray)[i]
+                priceItem.categoryPrice = this.resources.getStringArray(R.array.cakeCategory)[i]
+                priceItem.descriptionPrice = this.resources.getStringArray(R.array.cakeDescription)[i]
+                priceItem.otdelPrice =2;
+                priceDAO.addPrice(priceItem)//добавление в базу тортика
+            }
 
         val bottomNavigationView:BottomNavigationView = findViewById(R.id.navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

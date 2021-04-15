@@ -61,6 +61,8 @@ class login() : AppCompatActivity() {
             editor.apply()
             startActivity(Intent(applicationContext,MainActivity::class.java))
             finish()
+        }else{
+            Toast.makeText(this,"Пользователь не найден",Toast.LENGTH_SHORT).show()
         }
     }
 
