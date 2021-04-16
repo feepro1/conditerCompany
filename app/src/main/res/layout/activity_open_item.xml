@@ -7,21 +7,22 @@
     tools:context=".Open_item">
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:backgroundTint="#00494949"
+        android:onClick="backBtnClick"
         android:scaleType="fitXY"
         android:scaleX="1.5"
         android:scaleY="1.5"
         android:tint="#4E4E4E"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/name_openItemTW"
         app:srcCompat="@drawable/abc_vector_test" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/name_openItemTW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -44,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/name_openItemTW" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -82,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/description_openItemTW"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -96,26 +97,28 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/saleRandomTW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginBottom="32dp"
         android:text="Цена 300Р"
         android:textColor="#539747"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buy_openItemBtn"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="173dp"
+        android:id="@+id/buy_openItemBtn"
+        android:layout_width="wrap_content"
         android:layout_height="72dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/atma_light"
+        android:onClick="buy_openItemBtnClick"
         android:text="Купить"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

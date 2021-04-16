@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.conditer.fabrika.dummy.DummyContent
+import androidx.room.Room
+import com.conditer.conditercompany.databasese.AppDatabase
 
 /**
  * A fragment representing a list of Items.
@@ -16,7 +17,7 @@ import com.conditer.fabrika.dummy.DummyContent
 class CakesFragment : Fragment() {
 
     private var columnCount = 1
-
+    lateinit var db: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -38,7 +39,13 @@ class CakesFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyCakesRecyclerViewAdapter(DummyContent.ITEMS)
+                db = Room.databaseBuilder(
+                    context,
+                    AppDatabase::class.java, "database"
+                ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
+                val priceDAO = db.priceTableDao();
+                val items = priceDAO.getAllPriceFromOtdel(2);
+                adapter = MyCakesRecyclerViewAdapter(context,items)
             }
         }
         return view

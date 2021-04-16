@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
+import com.conditer.conditercompany.databasese.AppDatabase
 import com.conditer.fabrika.dummy.DummyContent
 
 /**
@@ -16,7 +18,7 @@ import com.conditer.fabrika.dummy.DummyContent
 class SweetFragment : Fragment() {
 
     private var columnCount = 1
-
+    lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +41,13 @@ class SweetFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MySweetRecyclerViewAdapter(DummyContent.ITEMS)
+                db = Room.databaseBuilder(
+                    context,
+                    AppDatabase::class.java, "database"
+                ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
+                val priceDAO = db.priceTableDao();
+                val items = priceDAO.getAllPriceFromOtdel(1);
+                adapter = MySweetRecyclerViewAdapter(context,items)
             }
         }
         return view
