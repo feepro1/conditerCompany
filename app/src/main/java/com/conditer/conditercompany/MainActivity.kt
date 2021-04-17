@@ -28,6 +28,12 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
+                R.id.navigation_rec -> {
+                    val fragment = RecFragment()
+                    supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
+                        .commit()
+                    return@OnNavigationItemSelectedListener true
+                }
             }
             false
         }

@@ -8,7 +8,7 @@ public class priceTable {
     @PrimaryKey(autoGenerate = true)
     public long id_price = 0;
 
-    public short otdelPrice;
+    public int otdelPrice;
 
     public String namePrice;
 

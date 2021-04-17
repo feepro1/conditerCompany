@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/navigation_rec"
+        android:icon="@drawable/ic_free_icon_quality_654117"
+        android:title="Рекомендации" />
+    <item
         android:id="@+id/navigation_sweet"
         android:icon="@drawable/ic_candy"
         android:title="@string/sweet" />

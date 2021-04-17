@@ -20,6 +20,9 @@ public interface priceTableDao {
     @Query("SELECT * FROM priceTable WHERE namePrice LIKE :namePrice")
     priceTable getPriceByID(String namePrice);
 
+    @Query("SELECT * FROM priceTable")
+    List<priceTable> getAllPrice();
+
     @Insert
     void addPrice(priceTable priceTable);
 
