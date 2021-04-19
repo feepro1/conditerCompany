@@ -30,11 +30,11 @@ class Open_item : AppCompatActivity() {
       val buyIntent = Intent(applicationContext,buyActivity::class.java)
         buyIntent
             .putExtra("price", price)
-            .putExtra("id_price",intent.getStringExtra("id_price"))
+            .putExtra("id_price",intent.getLongExtra("id_price",-1))
             .putExtra("categoryPrice",intent.getStringExtra("categoryPrice"))
             .putExtra("descriptionPrice",intent.getStringExtra("descriptionPrice"))
             .putExtra("namePrice",intent.getStringExtra("namePrice"))
-            .putExtra("otdelPrice",intent.getStringExtra("otdelPrice"))
+            .putExtra("otdelPrice",intent.getLongExtra("otdelPrice",-1))
         startActivity(buyIntent)
     }
 }

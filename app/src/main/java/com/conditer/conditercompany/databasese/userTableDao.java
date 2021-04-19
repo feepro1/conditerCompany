@@ -24,6 +24,9 @@ public interface userTableDao {
     @Query("SELECT id_user FROM userTable WHERE login = :login AND pass = :pass")
     long userIsReal(String login, String pass);
 
+    @Query("SELECT id_user FROM userTable WHERE name = :name")
+    long getIdUserByName(String name);
+
     @Insert
     void addUser(userTable userTable);
 

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.room.Room
 import com.conditer.conditercompany.databasese.AppDatabase
+import java.util.*
 
 /**
  * A fragment representing a list of Items.
@@ -44,6 +45,7 @@ class RecFragment : Fragment() {
                 ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
                 val priceDAO = db.priceTableDao();
                 val items = priceDAO.allPrice
+                items.shuffle()
                 adapter = MyRecRecyclerViewAdapter(context,items)
             }
         }

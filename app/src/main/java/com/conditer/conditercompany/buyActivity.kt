@@ -1,12 +1,19 @@
 package com.conditer.conditercompany
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.RatingBar
 import android.widget.TextView
+import androidx.room.Room
+import com.conditer.conditercompany.databasese.AppDatabase
+import com.conditer.conditercompany.databasese.buyTable
+import com.conditer.conditercompany.databasese.userTable
 
 class buyActivity : AppCompatActivity() {
 
+        lateinit var db: AppDatabase
         private lateinit var countTW :TextView
         private lateinit var summTW :TextView
         var price:Int = 0
@@ -33,5 +40,22 @@ class buyActivity : AppCompatActivity() {
     fun addBuyBtnClick(view: View) {
         countTW.text = (countTW.text.toString().toInt()+1).toString()
         summTW.text = (summTW.text.toString().toInt()+price).toString()
+    }
+
+    fun buyBtnClick(view: View) {
+        db = Room.databaseBuilder(
+                applicationContext,
+                AppDatabase::class.java, "database"
+        ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
+        val mySharedPreferences = getSharedPreferences("prefer", Context.MODE_PRIVATE)
+
+        val btd = db.buyTableDao()
+        val newBuy =  buyTable()
+        newBuy.id_price = intent.getLongExtra("id_price",-1)
+        newBuy.rateBuy = findViewById<RatingBar>(R.id.ratingBar2).rating.toLong()
+        newBuy.id_user = db.userTableDao().getIdUserByName(mySharedPreferences.getString("Nickname",""))
+
+        btd.addNewBuy(newBuy)
+
     }
 }

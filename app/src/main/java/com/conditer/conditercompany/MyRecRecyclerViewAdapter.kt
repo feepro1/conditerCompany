@@ -25,11 +25,13 @@ class MyRecRecyclerViewAdapter(
     val CAKE_VIEW_TYPE = 2;
 
     override fun getItemViewType(position: Int): Int {
+
         if(values[position].otdelPrice.toInt() == SWEET_VIEW_TYPE) return SWEET_VIEW_TYPE
         return CAKE_VIEW_TYPE
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         val view = if(viewType == SWEET_VIEW_TYPE)
                         LayoutInflater.from(parent.context).inflate(
                             R.layout.fragment_item_sweet,
