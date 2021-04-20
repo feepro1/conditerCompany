@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.room.Room
 import com.conditer.conditercompany.databasese.AppDatabase
 import com.conditer.conditercompany.databasese.buyTable
@@ -31,6 +33,10 @@ class buyActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.buy_priceTW).text = price.toString()
 
         summTW.text = price.toString()
+
+        if(intent.getIntExtra("otdelPrice",-1) == 1){
+            findViewById<ImageView>(R.id.imageView3).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_candy))
+        }
     }
 
     fun minusBuyBtnClick(view: View) {

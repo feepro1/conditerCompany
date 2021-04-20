@@ -11,7 +11,6 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.startActivity
 import com.conditer.conditercompany.databasese.priceTable
 
-import com.conditer.fabrika.dummy.DummyContent.DummyItem
 import kotlin.coroutines.coroutineContext
 
 /**

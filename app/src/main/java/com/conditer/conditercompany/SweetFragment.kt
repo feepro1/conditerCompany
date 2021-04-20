@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.conditer.conditercompany.databasese.AppDatabase
-import com.conditer.fabrika.dummy.DummyContent
 
 /**
  * A fragment representing a list of Items.

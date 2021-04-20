@@ -27,7 +27,7 @@ class login() : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val mySharedPreferences = getSharedPreferences("prefer", Context.MODE_PRIVATE)
-        if (mySharedPreferences.contains("Nickname")) {
+        if (mySharedPreferences.contains("user_id_SP")) {
             startActivity(Intent(applicationContext, MainActivity::class.java))
             finish()
         }

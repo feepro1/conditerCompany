@@ -1,10 +1,15 @@
 package com.conditer.conditercompany
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import kotlin.random.Random
 
 class Open_item : AppCompatActivity() {
@@ -19,6 +24,9 @@ class Open_item : AppCompatActivity() {
         price = Random.nextInt(100,600).toString()
         findViewById<TextView>(R.id.saleRandomTW).text = "Цена ${price}Р"
 
+        if(intent.getIntExtra("otdelPrice",-1) == 1){
+            findViewById<ImageView>(R.id.imageView2).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_candy))
+        }
 
     }
 
@@ -34,7 +42,7 @@ class Open_item : AppCompatActivity() {
             .putExtra("categoryPrice",intent.getStringExtra("categoryPrice"))
             .putExtra("descriptionPrice",intent.getStringExtra("descriptionPrice"))
             .putExtra("namePrice",intent.getStringExtra("namePrice"))
-            .putExtra("otdelPrice",intent.getLongExtra("otdelPrice",-1))
+            .putExtra("otdelPrice",intent.getIntExtra("otdelPrice",-1))
         startActivity(buyIntent)
     }
 }
