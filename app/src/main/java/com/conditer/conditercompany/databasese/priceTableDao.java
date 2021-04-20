@@ -17,8 +17,8 @@ public interface priceTableDao {
     @Query("SELECT * FROM priceTable WHERE otdelPrice = :otdel")
     List<priceTable> getAllPriceFromOtdel(short otdel);
 
-    @Query("SELECT * FROM priceTable WHERE namePrice LIKE :namePrice")
-    priceTable getPriceByID(String namePrice);
+    @Query("SELECT * FROM priceTable WHERE id_price LIKE :id_price")
+    priceTable getPriceByID(Long id_price);
 
     @Query("SELECT * FROM priceTable")
     List<priceTable> getAllPrice();

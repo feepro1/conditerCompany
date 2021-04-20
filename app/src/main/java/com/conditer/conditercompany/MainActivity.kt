@@ -55,7 +55,9 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView:BottomNavigationView = findViewById(R.id.navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-
+        val fragment = RecFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
+                .commit()
 
     }
 

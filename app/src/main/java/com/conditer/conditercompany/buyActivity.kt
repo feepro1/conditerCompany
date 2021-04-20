@@ -53,9 +53,9 @@ class buyActivity : AppCompatActivity() {
         val newBuy =  buyTable()
         newBuy.id_price = intent.getLongExtra("id_price",-1)
         newBuy.rateBuy = findViewById<RatingBar>(R.id.ratingBar2).rating.toLong()
-        newBuy.id_user = db.userTableDao().getIdUserByName(mySharedPreferences.getString("Nickname",""))
+        newBuy.id_user = mySharedPreferences.getLong("user_id_SP",0)
 
         btd.addNewBuy(newBuy)
-
+        finish()
     }
 }

@@ -57,7 +57,7 @@ class login() : AppCompatActivity() {
         if(user_id!! > 0){
             val mySharedPreferences = getSharedPreferences("prefer", Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = mySharedPreferences.edit()
-            editor.putString("Nickname",utd?.getUserById(user_id).name)
+            editor.putLong("user_id_SP",user_id)
             editor.apply()
             startActivity(Intent(applicationContext,MainActivity::class.java))
             finish()

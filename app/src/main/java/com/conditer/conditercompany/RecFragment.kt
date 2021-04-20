@@ -1,5 +1,7 @@
 package com.conditer.conditercompany
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,8 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.conditer.conditercompany.databasese.AppDatabase
+import com.conditer.conditercompany.databasese.priceTable
+import java.lang.reflect.Array
 import java.util.*
 
 /**
@@ -44,8 +49,33 @@ class RecFragment : Fragment() {
                         AppDatabase::class.java, "database"
                 ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
                 val priceDAO = db.priceTableDao();
-                val items = priceDAO.allPrice
+                val buyDAO = db.buyTableDao();
+                var items = priceDAO.allPrice
                 items.shuffle()
+                var id_priceAndRate = buyDAO.getDistinctFromBuyTableByUI(activity!!.getSharedPreferences("prefer", Context.MODE_PRIVATE).getLong("user_id_SP",0))
+                id_priceAndRate.reverse()
+                id_priceAndRate = id_priceAndRate.distinctBy { it.id_price }
+                id_priceAndRate.sortByDescending { it.rateBuy }
+
+                if(id_priceAndRate.size > 0) {
+                    val buyItems = emptyList<priceTable>().toMutableList()
+                    for (i in 0 until id_priceAndRate.size) {
+                        buyItems += priceDAO.getPriceByID(id_priceAndRate[i].id_price)
+                        //buyItems[i].namePrice += id_priceAndRate[i].rateBuy.toString()
+                    }
+
+                    for((j, i) in (0..items.size step 2).withIndex()){
+                        if(j>=buyItems.size){
+                            break
+                        }
+
+                        items[i] = buyItems[j]
+                    }
+
+                }
+
+                items = items.distinctBy { it.namePrice }
+
                 adapter = MyRecRecyclerViewAdapter(context,items)
             }
         }

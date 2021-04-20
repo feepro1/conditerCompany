@@ -17,6 +17,9 @@ public interface buyTableDao {
     @Query("SELECT * FROM buyTable WHERE id_user = :id_user")
     buyTable getPriceByUserID(Long id_user);
 
+    @Query("SELECT id_price, rateBuy FROM buyTable WHERE id_user = :id_user ORDER BY id_buy")
+    List<id_priceAndRate> getDistinctFromBuyTableByUI(Long id_user);
+
     @Insert
     void addNewBuy(buyTable buyTable);
 
