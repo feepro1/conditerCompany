@@ -1,6 +1,10 @@
 package com.conditer.conditercompany
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.room.Room
@@ -95,5 +99,14 @@ class MainActivity : AppCompatActivity() {
                 priceDAO.update(priceItem)//добавление в базу тортика
 
             }
+    }
+
+    fun outButtonClick(view: View) {
+        val mySharedPreferences = getSharedPreferences("prefer", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = mySharedPreferences.edit()
+        editor.remove("user_id_SP")
+        editor.apply()
+        startActivity(Intent(applicationContext,login::class.java))
+        finish()
     }
 }
