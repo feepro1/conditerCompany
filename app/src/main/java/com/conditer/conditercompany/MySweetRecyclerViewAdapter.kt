@@ -39,6 +39,7 @@ class MySweetRecyclerViewAdapter(
             Open_item_intent.putExtra("descriptionPrice",item.descriptionPrice)
             Open_item_intent.putExtra("namePrice",item.namePrice)
             Open_item_intent.putExtra("otdelPrice",item.otdelPrice)
+            Open_item_intent.putExtra("pricePrice",item.pricePrice)
             context.startActivity(Open_item_intent)
         }
     }

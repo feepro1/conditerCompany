@@ -13,7 +13,7 @@ import androidx.core.content.res.ResourcesCompat
 import kotlin.random.Random
 
 class Open_item : AppCompatActivity() {
-     lateinit var price:String
+    var price:Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class Open_item : AppCompatActivity() {
         findViewById<TextView>(R.id.name_openItemTW).text = intent.getStringExtra("namePrice")
         findViewById<TextView>(R.id.description_openItemTW).text = intent.getStringExtra("descriptionPrice")
 
-        price = Random.nextInt(100,600).toString()
+        price = intent.getLongExtra("pricePrice",-1)//Random.nextInt(100,600).toString()
         findViewById<TextView>(R.id.saleRandomTW).text = "Цена ${price}Р"
 
         if(intent.getIntExtra("otdelPrice",-1) == 1){
@@ -43,6 +43,7 @@ class Open_item : AppCompatActivity() {
             .putExtra("descriptionPrice",intent.getStringExtra("descriptionPrice"))
             .putExtra("namePrice",intent.getStringExtra("namePrice"))
             .putExtra("otdelPrice",intent.getIntExtra("otdelPrice",-1))
+            .putExtra("pricePrice",intent.getLongExtra("pricePrice",-1))
         startActivity(buyIntent)
     }
 }

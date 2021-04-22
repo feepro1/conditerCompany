@@ -18,12 +18,12 @@ class buyActivity : AppCompatActivity() {
         lateinit var db: AppDatabase
         private lateinit var countTW :TextView
         private lateinit var summTW :TextView
-        var price:Int = 0
+        var price:Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buy)
-        price = intent.getStringExtra("price")!!.toInt()
+        price = intent.getLongExtra("pricePrice",-1)
 
         countTW =  findViewById<TextView>(R.id.countTW)
         summTW =  findViewById<TextView>(R.id.summTW)

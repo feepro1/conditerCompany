@@ -1,5 +1,6 @@
 package com.conditer.conditercompany
 
+import kotlin.random.Random.Default.nextInt
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -12,6 +13,8 @@ import com.conditer.conditercompany.databasese.AppDatabase
 import com.conditer.conditercompany.databasese.priceTable
 import com.conditer.conditercompany.databasese.priceTableDao
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.util.*
+import kotlin.random.Random.Default.nextLong
 
 
 class MainActivity : AppCompatActivity() {
@@ -74,12 +77,14 @@ class MainActivity : AppCompatActivity() {
                 priceItem.categoryPrice = this.resources.getStringArray(R.array.sweetCategory)[i]
                 priceItem.descriptionPrice = this.resources.getStringArray(R.array.sweetDescription)[i]
                 priceItem.otdelPrice = 1;
-                priceDAO.addPrice(priceItem)//добавление в базу
+                priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
+                priceDAO.addPrice(priceItem)//добавление в базу конфеты
 
                 priceItem.namePrice = this.resources.getStringArray(R.array.cakeArray)[i]
                 priceItem.categoryPrice = this.resources.getStringArray(R.array.cakeCategory)[i]
                 priceItem.descriptionPrice = this.resources.getStringArray(R.array.cakeDescription)[i]
                 priceItem.otdelPrice =2;
+                priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
                 priceDAO.addPrice(priceItem)//добавление в базу тортика
             }
         else
@@ -89,13 +94,15 @@ class MainActivity : AppCompatActivity() {
                 priceItem.categoryPrice = this.resources.getStringArray(R.array.sweetCategory)[i]
                 priceItem.descriptionPrice = this.resources.getStringArray(R.array.sweetDescription)[i]
                 priceItem.otdelPrice = 1;
-                priceDAO.update(priceItem)//добавление в базу
+                priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
+                priceDAO.update(priceItem)//добавление в базу конфеты
 
                 priceItem.id_price = (i+2).toLong();
                 priceItem.namePrice = this.resources.getStringArray(R.array.cakeArray)[i]
                 priceItem.categoryPrice = this.resources.getStringArray(R.array.cakeCategory)[i]
                 priceItem.descriptionPrice = this.resources.getStringArray(R.array.cakeDescription)[i]
                 priceItem.otdelPrice =2;
+                priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
                 priceDAO.update(priceItem)//добавление в базу тортика
 
             }

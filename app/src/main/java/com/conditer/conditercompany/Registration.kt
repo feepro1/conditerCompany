@@ -38,7 +38,7 @@ class Registration : AppCompatActivity() {
 
         val newUser1 = utd?.getUserById(utd.usersCount)
         if (newUser1 != null) {
-            Toast.makeText(this,"Пользватель создан",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Пользователь создан",Toast.LENGTH_SHORT).show()
             finish()
         }
     }

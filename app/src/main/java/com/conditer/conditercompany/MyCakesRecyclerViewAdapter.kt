@@ -37,6 +37,7 @@ class MyCakesRecyclerViewAdapter(
                 .putExtra("descriptionPrice",item.descriptionPrice)
                 .putExtra("namePrice",item.namePrice)
                 .putExtra("otdelPrice",item.otdelPrice)
+                .putExtra("pricePrice",item.pricePrice)
             context.startActivity(Open_item_intent)
         }
     }
