@@ -87,25 +87,6 @@ class MainActivity : AppCompatActivity() {
                 priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
                 priceDAO.addPrice(priceItem)//добавление в базу тортика
             }
-        else
-            for(i in 0..9 step 2){
-                priceItem.id_price = (i+1).toLong();
-                priceItem.namePrice = this.resources.getStringArray(R.array.sweetArray)[i]
-                priceItem.categoryPrice = this.resources.getStringArray(R.array.sweetCategory)[i]
-                priceItem.descriptionPrice = this.resources.getStringArray(R.array.sweetDescription)[i]
-                priceItem.otdelPrice = 1;
-                //priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
-                priceDAO.update(priceItem)//добавление в базу конфеты
-
-                priceItem.id_price = (i+2).toLong();
-                priceItem.namePrice = this.resources.getStringArray(R.array.cakeArray)[i]
-                priceItem.categoryPrice = this.resources.getStringArray(R.array.cakeCategory)[i]
-                priceItem.descriptionPrice = this.resources.getStringArray(R.array.cakeDescription)[i]
-                priceItem.otdelPrice =2;
-                //priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
-                priceDAO.update(priceItem)//добавление в базу тортика
-
-            }
     }
 
     fun outButtonClick(view: View) {
