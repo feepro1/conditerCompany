@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                 priceItem.categoryPrice = this.resources.getStringArray(R.array.sweetCategory)[i]
                 priceItem.descriptionPrice = this.resources.getStringArray(R.array.sweetDescription)[i]
                 priceItem.otdelPrice = 1;
-                priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
+                //priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
                 priceDAO.update(priceItem)//добавление в базу конфеты
 
                 priceItem.id_price = (i+2).toLong();
@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                 priceItem.categoryPrice = this.resources.getStringArray(R.array.cakeCategory)[i]
                 priceItem.descriptionPrice = this.resources.getStringArray(R.array.cakeDescription)[i]
                 priceItem.otdelPrice =2;
-                priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
+                //priceItem.pricePrice = kotlin.random.Random.Default.nextLong(100,600)
                 priceDAO.update(priceItem)//добавление в базу тортика
 
             }
