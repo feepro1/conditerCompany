@@ -12,7 +12,7 @@ import androidx.room.Room
 import com.conditer.conditercompany.databasese.AppDatabase
 
 /**
- * A fragment representing a list of Items.
+ * фрагмент который выводит список конфет
  */
 class SweetFragment : Fragment() {
 
@@ -40,12 +40,15 @@ class SweetFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
+                //инициализация бд
                 db = Room.databaseBuilder(
                     context,
                     AppDatabase::class.java, "database"
                 ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
-                val priceDAO = db.priceTableDao();
+                val priceDAO = db.priceTableDao()
+                //полуечние всех полей из прайса по Отделу
                 val items = priceDAO.getAllPriceFromOtdel(1);
+                //добавление адаптера
                 adapter = MySweetRecyclerViewAdapter(context,items)
             }
         }
