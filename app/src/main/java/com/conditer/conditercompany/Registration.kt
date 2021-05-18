@@ -12,6 +12,7 @@ import com.conditer.conditercompany.databasese.userTable
 import com.conditer.conditercompany.databasese.userTableDao
 
 class Registration : AppCompatActivity() {
+    //получаем бд
     lateinit var db: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +22,7 @@ class Registration : AppCompatActivity() {
             AppDatabase::class.java, "database"
         ).allowMainThreadQueries().build()
     }
-
+//оьработка нажатия кнопки регистрации
     fun registerBtnClick(view: View) {
         val name = findViewById<EditText>(R.id.nameET).text
         val login = findViewById<EditText>(R.id.loginET2).text
@@ -34,8 +35,8 @@ class Registration : AppCompatActivity() {
         newUser.name = name.toString()
         newUser.login = login.toString()
         newUser.pass = pass.toString()
-        utd?.addUser(newUser)
-
+        utd?.addUser(newUser) //добавление в бд
+//при успехе, запись в кеш
         val newUser1 = utd?.getUserById(utd.usersCount)
         if (newUser1 != null) {
             Toast.makeText(this,"Пользователь создан",Toast.LENGTH_SHORT).show()
