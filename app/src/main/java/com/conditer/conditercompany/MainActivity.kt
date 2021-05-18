@@ -18,23 +18,27 @@ import kotlin.random.Random.Default.nextLong
 
 
 class MainActivity : AppCompatActivity() {
-
+//экземпляр бд
     lateinit var db: AppDatabase
+//listener нажатий на нижней панели навигации
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
+            when (item.itemId) {//переход на страницу с конфетами
+
                 R.id.navigation_sweet -> {
                     val fragment = SweetFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
+                //переход на страницу с тортами
                 R.id.navigation_cakes -> {
                     val fragment = CakesFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
                         .commit()
                     return@OnNavigationItemSelectedListener true
                 }
+                //переход на страницу рекомендаций
                 R.id.navigation_rec -> {
                     val fragment = RecFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
@@ -44,29 +48,32 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
-
+ //при создании экрана
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        //получение экземпляра бд
         db = Room.databaseBuilder(
                 applicationContext,
                 AppDatabase::class.java, "database"
         ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
+        //инициализация интерфейса для редактирования прайся
         val priceDAO = db.priceTableDao();
 
 
         updateListPrice(priceDAO)
 
-
+        //вешаем слушатель на панель навигации
         val bottomNavigationView:BottomNavigationView = findViewById(R.id.navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        //открываем первым экраном рекомендации 
         val fragment = RecFragment()
         supportFragmentManager.beginTransaction().replace(R.id.frame, fragment, fragment.javaClass.simpleName)
                 .commit()
 
     }
+//обновление базы из кеша(предполагается что данные должны быть на сервере
 
     private fun updateListPrice(priceDAO: priceTableDao) {
 
@@ -88,7 +95,7 @@ class MainActivity : AppCompatActivity() {
                 priceDAO.addPrice(priceItem)//добавление в базу тортика
             }
     }
-
+//кнопка выхода из системы. Чистка кеша аккаунта
     fun outButtonClick(view: View) {
         val mySharedPreferences = getSharedPreferences("prefer", Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = mySharedPreferences.edit()
