@@ -20,7 +20,7 @@ class Open_item : AppCompatActivity() {
         setContentView(R.layout.activity_open_item)
         findViewById<TextView>(R.id.name_openItemTW).text = intent.getStringExtra("namePrice")
         findViewById<TextView>(R.id.description_openItemTW).text = intent.getStringExtra("descriptionPrice")
-
+//получение переданных на этот экрсн данных
         price = intent.getLongExtra("pricePrice",-1)//Random.nextInt(100,600).toString()
         findViewById<TextView>(R.id.saleRandomTW).text = "Цена ${price}Р"
 
@@ -29,12 +29,13 @@ class Open_item : AppCompatActivity() {
         }
 
     }
-
+//закрыть экран
     fun backBtnClick(view: View) {
         finish()
     }
-
+//нажатие кнопки купить
     fun buy_openItemBtnClick(view: View) {
+        //добавление данных в новый экран и его запуса
       val buyIntent = Intent(applicationContext,buyActivity::class.java)
         buyIntent
             .putExtra("price", price)
