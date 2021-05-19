@@ -3,7 +3,7 @@ package com.conditer.conditercompany.databasese;
 import android.app.Application;
 
 import androidx.room.Room;
-
+//класс для получения экземпляра бд
 public class App extends Application {
 
     public static App instance;
