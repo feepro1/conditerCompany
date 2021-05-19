@@ -13,10 +13,7 @@ import com.conditer.conditercompany.databasese.priceTable
 
 import kotlin.coroutines.coroutineContext
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem].
- * TODO: Replace the implementation with code for your data type.
- */
+//адаптер отображающий конфеты списком
 class MySweetRecyclerViewAdapter(
     private val context: Context,
     private val values: List<priceTable>
@@ -27,7 +24,7 @@ class MySweetRecyclerViewAdapter(
             .inflate(R.layout.fragment_item_sweet, parent, false)
         return ViewHolder(view)
     }
-
+//заполение view данными
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.nameSweetTW.text = item.namePrice
@@ -40,13 +37,13 @@ class MySweetRecyclerViewAdapter(
             Open_item_intent.putExtra("namePrice",item.namePrice)
             Open_item_intent.putExtra("otdelPrice",item.otdelPrice)
             Open_item_intent.putExtra("pricePrice",item.pricePrice)
-            context.startActivity(Open_item_intent)
+            context.startActivity(Open_item_intent)//открыть активити с подробностями по товару
         }
     }
 
 
     override fun getItemCount(): Int = values.size
-
+//определение view для редактирования
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameSweetTW: TextView = view.findViewById(R.id.nameSweetTW)
         val frameCardSweet: CardView = view.findViewById(R.id.frameCardSweet)
