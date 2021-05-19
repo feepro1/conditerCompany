@@ -12,8 +12,7 @@ import com.conditer.conditercompany.databasese.priceTable
 
 
 /**
- * [RecyclerView.Adapter] that can display a [DummyItem].
- * TODO: Replace the implementation with code for your data type.
+*адаптер отображающий торты списком
  */
 class MyCakesRecyclerViewAdapter(
     private val context: Context,
@@ -25,10 +24,11 @@ class MyCakesRecyclerViewAdapter(
             .inflate(R.layout.fragment_item_cakes, parent, false)
         return ViewHolder(view)
     }
-
+// определяем для каждого эллемента списка данные 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.nameCakeTW.text = item.namePrice
+//слушатель на нажатия каждому эллементу списка
         holder.frameCardCake.setOnClickListener {
             val Open_item_intent = Intent(context,Open_item::class.java)
 
@@ -38,12 +38,12 @@ class MyCakesRecyclerViewAdapter(
                 .putExtra("namePrice",item.namePrice)
                 .putExtra("otdelPrice",item.otdelPrice)
                 .putExtra("pricePrice",item.pricePrice)
-            context.startActivity(Open_item_intent)
+            context.startActivity(Open_item_intent)//открыть активити с подробностями о товаре
         }
     }
 
     override fun getItemCount(): Int = values.size
-
+//определение редактируемых view в списке
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameCakeTW: TextView = view.findViewById(R.id.nameCakeTW)
         val frameCardCake: CardView = view.findViewById(R.id.frameCardCake)
