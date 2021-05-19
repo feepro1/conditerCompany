@@ -3,7 +3,7 @@ package com.conditer.conditercompany.databasese;
 //import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
+//объект записи в таблице пользователей
 @Entity
 public class userTable {
 
