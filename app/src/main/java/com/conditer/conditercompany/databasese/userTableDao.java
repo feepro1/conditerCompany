@@ -8,10 +8,10 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
-
+//интерфейс для работы с таблицей пользователей
 @Dao
 public interface userTableDao {
-
+//запросы к таблице пользователей 
     @Query("SELECT * FROM userTable")
     List<userTable> getAllUsers();
 
