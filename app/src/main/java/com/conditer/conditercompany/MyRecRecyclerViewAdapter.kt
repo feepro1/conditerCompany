@@ -11,16 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.conditer.conditercompany.databasese.priceTable
 
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem].
- * TODO: Replace the implementation with code for your data type.
- */
+//адаптер отображающий рекомендации списком
 class MyRecRecyclerViewAdapter(
     private val context: Context,
     private val values: List<priceTable>
 )
     : RecyclerView.Adapter<MyRecRecyclerViewAdapter.ViewHolder>() {
-
+//разные типы отображения для конфет и тортов
     val SWEET_VIEW_TYPE = 1;
     val CAKE_VIEW_TYPE = 2;
 
@@ -46,7 +43,7 @@ class MyRecRecyclerViewAdapter(
                         )
         return ViewHolder(view,viewType)
     }
-
+//заполение view каждого еллемента данными
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.nameTW.text = item.namePrice
@@ -66,7 +63,7 @@ class MyRecRecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int = values.size
-
+//определение необходимых для редактирования полей
     inner class ViewHolder(view: View,viewType: Int) : RecyclerView.ViewHolder(view) {
 
         var nameTW: TextView
