@@ -7,10 +7,10 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
-
+//интерфейс для работы с таблицей покупок
 @Dao
 public interface buyTableDao {
-
+//запросы необходимые для работы с таблицец
     @Query("SELECT * FROM buyTable")
     List<buyTable> getAllFromBuyTable();
 
