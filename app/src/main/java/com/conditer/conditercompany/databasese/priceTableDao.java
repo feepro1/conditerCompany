@@ -7,10 +7,10 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
-
+//интерфейс взаимодействия с таблицей прайса
 @Dao
 public interface priceTableDao {
-
+//запросы к таблице с прайсом 
     @Query("SELECT COUNT(*) FROM priceTable")
     long getCountAllPrice();
 
