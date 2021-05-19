@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class CheckLogin : AppCompatActivity() {
-    // это будет именем файла настроек
+    // проверка в кеше вошел ли пользователь в систему
     val APP_PREFERENCES = "mysettings"
-    val APP_PREFERENCES_NAME = "Nickname" // имя кота
+    val APP_PREFERENCES_NAME = "Nickname"
 
     fun CheckLogin(): Boolean{
         val mySharedPreferences = getSharedPreferences("prefer", Context.MODE_PRIVATE)
