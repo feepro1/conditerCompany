@@ -12,7 +12,7 @@ import androidx.room.Room
 import com.conditer.conditercompany.databasese.AppDatabase
 
 /**
- * A fragment representing a list of Items.
+ * корневой фрагмент для списка тортов 
  */
 class CakesFragment : Fragment() {
 
@@ -38,7 +38,8 @@ class CakesFragment : Fragment() {
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
-                }
+               } 
+//передача в адаптер объектов из бд
                 db = Room.databaseBuilder(
                     context,
                     AppDatabase::class.java, "database"
@@ -50,7 +51,7 @@ class CakesFragment : Fragment() {
         }
         return view
     }
-
+//определение параметров и количества столбцов в списке 
     companion object {
 
         // TODO: Customize parameter argument names
