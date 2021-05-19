@@ -2,7 +2,7 @@ package com.conditer.conditercompany.databasese;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
+//объект таблицы с покупками
 @Entity
 public class buyTable {
 
