@@ -18,7 +18,7 @@ import java.lang.reflect.Array
 import java.util.*
 
 /**
- * A fragment representing a list of Items.
+ * корневой фрагмент для списка рекомендаций
  */
 class RecFragment : Fragment() {
 
@@ -44,16 +44,18 @@ class RecFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
+//инициализация базы дпнных
                 db = Room.databaseBuilder(
                         context,
                         AppDatabase::class.java, "database"
                 ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
-                val priceDAO = db.priceTableDao();
+               //определение интерфейса для работы с таблицами
+		 val priceDAO = db.priceTableDao();
                 val buyDAO = db.buyTableDao();
-                var items = priceDAO.allPrice
-                items.shuffle()
+                var items = priceDAO.allPrice//получение списка объектов 
+                items.shuffle()//перемешать список
                 var id_priceAndRate = buyDAO.getDistinctFromBuyTableByUI(activity!!.getSharedPreferences("prefer", Context.MODE_PRIVATE).getLong("user_id_SP",0))
-                id_priceAndRate.reverse()
+                id_priceAndRate.reverse()//сортировка списка по возрастанию рейтинга
                 id_priceAndRate = id_priceAndRate.distinctBy { it.id_price }
                 id_priceAndRate.sortByDescending { it.rateBuy }
 
@@ -75,13 +77,13 @@ class RecFragment : Fragment() {
                 }
 
                 items = items.distinctBy { it.namePrice }
-
+//запуск и передача в адаптер контекста и списка рекомендаций
                 adapter = MyRecRecyclerViewAdapter(context,items)
             }
         }
         return view
     }
-
+//объекты параметров, количество столбцов в списке 
     companion object {
 
         // TODO: Customize parameter argument names
