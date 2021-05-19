@@ -2,7 +2,7 @@ package com.conditer.conditercompany.databasese;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
+//объект записи в таблице с прайсом
 @Entity
 public class priceTable {
     @PrimaryKey(autoGenerate = true)
